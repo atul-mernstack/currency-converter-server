@@ -12,8 +12,8 @@ exports.getTopHundredCryptocurrencies=async(req,res)=>{
         }));
         res.status(200).json(top100);
       } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: error.message });
+
+        res.status(error.response.data.status.error_code).json({message:error.message});
       }    
 }
 
@@ -29,7 +29,7 @@ exports.getConvertedCurrency=async(req,res)=>{
     res.status(200).json({ sourceCrypto, amount, targetCurrency, convertedAmount });
   } catch (error) {
     console.error(error.message);
-    res.status(500).json({ message: error.message });
+    res.status(error.response.data.status.error_code).json({ message: error.message });
   }
 
 }
