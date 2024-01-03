@@ -13,7 +13,7 @@ exports.getTopHundredCryptocurrencies=async(req,res)=>{
         res.status(200).json(top100);
       } catch (error) {
 
-        res.status(error.response.data.status.error_code).json({message:error.message});
+        res.status(error.response.data.status.error_code).json(error);
       }    
 }
 
